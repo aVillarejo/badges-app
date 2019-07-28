@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 
 //Components
-import NavBar from "../components/Navbar";
 import header from "../images/badge-header.svg";
 import Badge from "../components/Badge";
 import BadgeForm from "../components/BadgeForm";
@@ -32,8 +31,7 @@ const BadgeNew = () => {
   };
 
   return (
-    <div>
-      <NavBar />
+    <Fragment>
       <div className="BadgeNew__hero">
         <img className="img-fluid" src={header} alt="Logo" />
       </div>
@@ -57,7 +55,7 @@ const BadgeNew = () => {
           </div>
         </div>
       </div>
-    </div>
+    </Fragment>
   );
 };
 

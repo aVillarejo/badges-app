@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Fragment } from "react";
-
-import Navbar from "../components/Navbar";
+import { Link } from "react-router-dom";
 import confLogo from "../images/platziconf-logo.svg";
+
 //Styles
 import "./styles/Badges.css";
 import BadgesList from "../components/BadgesList";
@@ -53,20 +53,20 @@ const Badges = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    async function handleData() {
-      setData(default_data);
-    }
-    handleData();
-  }, [data]);
+    console.log("Montaje");
 
-  const handleClick = e => {
-    e.preventDefault();
-    console.log(data);
-  };
+    const timeoutId = setTimeout(() => {
+      setData(default_data);
+    }, 3000);
+    console.log("Obteniedo datos");
+    return () => {
+      clearTimeout(timeoutId);
+      console.log("Desmontaje");
+    };
+  }, [data]);
 
   return (
     <Fragment>
-      <Navbar />
       <div className="Badges">
         <div className="Badges__hero">
           <div className="Badges__container">
@@ -77,13 +77,9 @@ const Badges = () => {
 
       <div className="Badges__container">
         <div className="Badges__buttons">
-          <a
-            href="/badges/new"
-            className="btn btn-primary"
-            onClick={handleClick}
-          >
+          <Link to="/badges/new" className="btn btn-primary">
             New Badge
-          </a>
+          </Link>
         </div>
         <BadgesList badges={data} />
       </div>
