@@ -50,20 +50,23 @@ const default_data = [
 ];
 
 const Badges = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(() => {
+    console.log("constructor ");
+    return [];
+  });
 
   useEffect(() => {
-    console.log("Montaje");
-
+    console.log("didMount/didUpdate");
     const timeoutId = setTimeout(() => {
       setData(default_data);
     }, 3000);
-    console.log("Obteniedo datos");
     return () => {
       clearTimeout(timeoutId);
-      console.log("Desmontaje");
+      console.log("willUnmount");
     };
   }, [data]);
+
+  console.log("render");
 
   return (
     <Fragment>
@@ -74,7 +77,6 @@ const Badges = () => {
           </div>
         </div>
       </div>
-
       <div className="Badges__container">
         <div className="Badges__buttons">
           <Link to="/badges/new" className="btn btn-primary">
