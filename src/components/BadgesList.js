@@ -1,10 +1,34 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
+//styles and Assets
 import twitter_logo from "../images/twitter.svg";
-//styles
 import "./styles/BadgesList.css";
 
 const BadgesList = ({ badges }) => {
+  if (badges.length === 0)
+    return (
+      <div className="card">
+        <div className="card-header" />
+        <div className="card-body">
+          <h5 className="card-title">No Badges were found</h5>
+          <p className="card-text">Why do not you create one?</p>
+          <Link to="/badges/new" className="btn btn-primary">
+            Create a new badge
+          </Link>
+        </div>
+      </div>
+      // <div
+      //   style={{ width: "auto" }}
+      //   className="card d-flex justify-content-center align-items-center"
+      // >
+      //   <div className="card-content">
+      //     <h3>
+      //       No Badges were found,
+      //       <br /> create a new one
+      //     </h3>
+      //   </div>
+      // </div>
+    );
   return (
     <div className="BadgesList">
       <ul className="list-unstyled ">

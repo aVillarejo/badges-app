@@ -1,0 +1,9 @@
+.Loading__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  width: 100%;
+  min-height: 50vh;
+}
