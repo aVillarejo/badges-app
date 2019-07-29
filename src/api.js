@@ -1,5 +1,3 @@
-const BASE_URL = "http://localhost:3001";
-
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 const randomNumber = (min = 0, max = 1) =>
   Math.floor(Math.random() * (max - min + 1)) + min;
@@ -14,7 +12,7 @@ async function callApi(endpoint, options = {}) {
     Accept: "application/json"
   };
 
-  const url = BASE_URL + endpoint;
+  const url = endpoint;
   const response = await fetch(url, options);
   const data = await response.json();
 

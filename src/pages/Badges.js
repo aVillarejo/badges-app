@@ -12,7 +12,7 @@ import confLogo from "../images/platziconf-logo.svg";
 import "./styles/Badges.css";
 
 const Badges = () => {
-  const [data, setData] = useState(undefined);
+  const [data, setData] = useState([]);
   const [isLoading, setisLoading] = useState(true);
   const [error, setError] = useState(null);
 

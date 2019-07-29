@@ -1,6 +1,6 @@
 import React from "react";
 
-const BadgeForm = ({ data, onChange, onSubmit }) => {
+const BadgeForm = ({ data, onChange, onSubmit, isLoading }) => {
   const { firstName, lastName, email, jobTitle, twitter } = data;
   return (
     <div className="">
@@ -71,10 +71,7 @@ const BadgeForm = ({ data, onChange, onSubmit }) => {
           </div>
         </div>
 
-        <button
-          // onClick={handleClick}
-          className="btn btn-primary"
-        >
+        <button disabled={isLoading} className="btn btn-primary">
           Crear Badge
         </button>
       </form>

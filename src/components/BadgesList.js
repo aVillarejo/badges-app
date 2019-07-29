@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
+import Gravatar from "./Gravatar";
 //styles and Assets
 import twitter_logo from "../images/twitter.svg";
 import "./styles/BadgesList.css";
@@ -44,12 +46,12 @@ const BadgesList = ({ badges }) => {
   );
 };
 const BadgeListitem = ({ badge }) => {
-  const { firstName, lastName, avatarUrl, twitter, jobTitle } = badge;
+  const { firstName, lastName, twitter, jobTitle, email } = badge;
   return (
     <div className="BadgesListItem">
-      <img
+      <Gravatar
         className="BadgesListItem__avatar"
-        src={avatarUrl}
+        email={email}
         alt={`${firstName}${lastName}_avatar`}
       />
       <div className="Badges__data">

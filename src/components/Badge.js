@@ -1,17 +1,12 @@
 import React from "react";
+import Gravatar from "./Gravatar";
 
+//Styles & Assets
 import "./styles/Badge.css";
 import headerLogo from "../images/badge-header.svg";
-const DEFAULT_avatarURL = "https://www.gravatar.com/avatar?d=identicon";
 
 const Badge = props => {
-  const {
-    avatarURL = DEFAULT_avatarURL,
-    firstName,
-    lastName,
-    jobTitle,
-    twitter
-  } = props;
+  const { email, firstName, lastName, jobTitle, twitter } = props;
   return (
     <div className="Badge">
       {/* Header */}
@@ -21,7 +16,7 @@ const Badge = props => {
 
       {/* Content */}
       <div className="Badge__section-name">
-        <img className="Badge__avatar" alt="Avatar" src={avatarURL} />
+        <Gravatar email={email} className="Badge__avatar" />
         <h1>
           {firstName} <br />
           {lastName}
