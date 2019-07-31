@@ -1,11 +1,24 @@
 import React from "react";
 
-const BadgeForm = ({ data, onChange, onSubmit, isLoading }) => {
+const BadgeForm = ({
+  data,
+  handlerData,
+  // onChange,
+  onSubmit,
+  isLoading,
+  edit
+}) => {
   const { firstName, lastName, email, jobTitle, twitter } = data;
+
+  const handleChange = e => {
+    const { name, value } = e.target;
+    handlerData({ ...data, [name]: value });
+  };
+
   return (
     <div className="">
       {/* Header */}
-      <h1 className="">Registro</h1>
+      <h1 className="">{edit ? "Editar" : "Registro"}</h1>
 
       {/* Form */}
       <form onSubmit={onSubmit}>
@@ -13,7 +26,7 @@ const BadgeForm = ({ data, onChange, onSubmit, isLoading }) => {
           <label>Nombre</label>
           <input
             required
-            onChange={onChange}
+            onChange={handleChange}
             type="text"
             name="firstName"
             className="form-control"
@@ -24,7 +37,7 @@ const BadgeForm = ({ data, onChange, onSubmit, isLoading }) => {
           <label>Apellido</label>
           <input
             required
-            onChange={onChange}
+            onChange={handleChange}
             type="text"
             name="lastName"
             className="form-control"
@@ -35,7 +48,7 @@ const BadgeForm = ({ data, onChange, onSubmit, isLoading }) => {
           <label>Email</label>
           <input
             required
-            onChange={onChange}
+            onChange={handleChange}
             type="email"
             name="email"
             className="form-control"
@@ -46,7 +59,7 @@ const BadgeForm = ({ data, onChange, onSubmit, isLoading }) => {
           <label>Job Title</label>
           <input
             required
-            onChange={onChange}
+            onChange={handleChange}
             type="text"
             name="jobTitle"
             className="form-control"
@@ -63,7 +76,7 @@ const BadgeForm = ({ data, onChange, onSubmit, isLoading }) => {
             <input
               className="form-control"
               name="twitter"
-              onChange={onChange}
+              onChange={handleChange}
               required
               type="text"
               value={twitter}
@@ -72,7 +85,7 @@ const BadgeForm = ({ data, onChange, onSubmit, isLoading }) => {
         </div>
 
         <button disabled={isLoading} className="btn btn-primary">
-          Crear Badge
+          {edit ? "Actualizar" : "Crear Badge"}
         </button>
       </form>
     </div>

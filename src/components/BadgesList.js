@@ -37,7 +37,12 @@ const BadgesList = ({ badges }) => {
         {badges.map(badge => {
           return (
             <li key={badge.id}>
-              <BadgeListitem badge={badge} />
+              <Link
+                to={`/badges/edit/${badge.id}`}
+                className="text-reset text-decoration-none"
+              >
+                <BadgeListitem badge={badge} />
+              </Link>
             </li>
           );
         })}

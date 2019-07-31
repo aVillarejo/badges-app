@@ -41,6 +41,38 @@
       "jobTitle": "Ventas Apple",
       "twitter": "anithagaribay19",
       "id": "n9oQ0aR"
+    },
+    {
+      "firstName": "José Alfredo",
+      "lastName": "Medina Cárdenas",
+      "email": "medina8911@gmail.com",
+      "jobTitle": "Backend Node JS",
+      "twitter": "medina89",
+      "id": "PABkMcK"
+    },
+    {
+      "firstName": "Luis Enrique",
+      "lastName": "Medina Cárdenas",
+      "email": "luissao@emotioncasino.com",
+      "jobTitle": "Dealer",
+      "twitter": "luissaoe_emotion",
+      "id": "WMeuIAC"
+    },
+    {
+      "firstName": "gerardo",
+      "lastName": "guevara",
+      "email": "gerardo.guevara@gmail.com",
+      "jobTitle": "Gerente @+Kota",
+      "twitter": "konol",
+      "id": "4-7W_H1"
+    },
+    {
+      "firstName": "Palmira",
+      "lastName": "Preciado",
+      "email": "palmer@gmail.com",
+      "jobTitle": "Enfermera",
+      "twitter": "palmer",
+      "id": "DkcZqxp"
     }
   ]
 }

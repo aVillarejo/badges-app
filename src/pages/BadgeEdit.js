@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 
 //Components
 import api from "../api";
@@ -9,10 +9,11 @@ import PageLoading from "../components/Loading";
 
 //Styles & Assets
 import conf_logo from "../images/platziconf-logo.svg";
-import "./styles/BadgeNew.css";
+import "./styles/BadgeEdit.css";
 
-const BadgeNew = props => {
-  const [isLoading, setisLoading] = useState(false);
+const BadgeEdit = props => {
+  const { badgeId } = props.match.params;
+  const [isLoading, setisLoading] = useState(true);
   const [error, setError] = useState(null);
   const [state, setState] = useState({
     firstName: "",
@@ -21,6 +22,22 @@ const BadgeNew = props => {
     jobTitle: "",
     twitter: ""
   });
+
+  useEffect(() => {
+    const fetchApi = async () => {
+      setisLoading(true);
+      setError(null);
+      try {
+        const fetchData = await api.badges.read(badgeId);
+        setState(fetchData);
+        setisLoading(false);
+      } catch (err) {
+        setisLoading(false);
+        setError(err);
+      }
+    };
+    fetchApi();
+  }, [badgeId]);
 
   const handleChange = e => {
     const { name, value } = e.target;
@@ -32,11 +49,12 @@ const BadgeNew = props => {
     setisLoading(true);
     setError(null);
     try {
-      await api.badges.create(state);
+      await api.badges.update(state.id, state);
       setisLoading(false);
       props.history.push("/badges");
     } catch (err) {
       setError(err);
+      console.log({ error: error });
       setisLoading(false);
     }
   };
@@ -44,11 +62,15 @@ const BadgeNew = props => {
     setError(null);
   };
 
+  if (error) {
+    return props.history.push("/badges");
+  }
+
   return (
     <Fragment>
-      <div className="BadgeNew__hero">
+      <div className="BadgeEdit__hero">
         <img
-          className="BadgeNew__hero-image img-fluid "
+          className="BadgeEdit__hero-image img-fluid "
           src={conf_logo}
           alt={`${conf_logo}`}
         />
@@ -66,11 +88,12 @@ const BadgeNew = props => {
                 lastName={state.lastName || "LASTNAME"}
                 jobTitle={state.jobTitle || "JOB TITLE"}
                 twitter={state.twitter || "twitter"}
-                email={state.email}
+                email={state.email || ""}
               />
             </div>
             <div className="col-6">
               <BadgeForm
+                edit
                 data={state}
                 onChange={handleChange}
                 onSubmit={handleSubmit}
@@ -85,4 +108,4 @@ const BadgeNew = props => {
   );
 };
 
-export default BadgeNew;
+export default BadgeEdit;
