@@ -38,7 +38,7 @@ const BadgesList = ({ badges }) => {
           return (
             <li key={badge.id}>
               <Link
-                to={`/badges/edit/${badge.id}`}
+                to={`/badges/${badge.id}`}
                 className="text-reset text-decoration-none"
               >
                 <BadgeListitem badge={badge} />

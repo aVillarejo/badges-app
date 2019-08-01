@@ -1,6 +1,5 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
-import api from "../api";
 
 //Components
 import BadgesList from "../components/BadgesList";
@@ -12,37 +11,8 @@ import MiniLoader from "../components/MiniLoader";
 import confLogo from "../images/platziconf-logo.svg";
 import "./styles/Badges.css";
 
-const Badges = () => {
-  const [data, setData] = useState(undefined);
-  const [isLoading, setisLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  const fetchApi = async () => {
-    setisLoading(true);
-    setError(null);
-
-    try {
-      const fetchData = await api.badges.list();
-      setData(fetchData);
-      setisLoading(false);
-    } catch (err) {
-      setisLoading(false);
-      setError(err);
-    }
-  };
-
-  useEffect(() => {
-    fetchApi();
-  }, []);
-
-  useEffect(() => {
-    const autoUpdate = setInterval(() => {
-      fetchApi();
-    }, 5000);
-    return () => {
-      clearInterval(autoUpdate);
-    };
-  }, []);
+const Badges = props => {
+  const { data, isLoading, error } = props;
 
   if (error) {
     return <PageError error={error} />;

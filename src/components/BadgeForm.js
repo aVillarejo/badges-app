@@ -1,19 +1,7 @@
 import React from "react";
 
-const BadgeForm = ({
-  data,
-  handlerData,
-  // onChange,
-  onSubmit,
-  isLoading,
-  edit
-}) => {
+const BadgeForm = ({ data, onChange, onSubmit, edit }) => {
   const { firstName, lastName, email, jobTitle, twitter } = data;
-
-  const handleChange = e => {
-    const { name, value } = e.target;
-    handlerData({ ...data, [name]: value });
-  };
 
   return (
     <div className="">
@@ -26,7 +14,7 @@ const BadgeForm = ({
           <label>Nombre</label>
           <input
             required
-            onChange={handleChange}
+            onChange={onChange}
             type="text"
             name="firstName"
             className="form-control"
@@ -37,7 +25,7 @@ const BadgeForm = ({
           <label>Apellido</label>
           <input
             required
-            onChange={handleChange}
+            onChange={onChange}
             type="text"
             name="lastName"
             className="form-control"
@@ -48,7 +36,7 @@ const BadgeForm = ({
           <label>Email</label>
           <input
             required
-            onChange={handleChange}
+            onChange={onChange}
             type="email"
             name="email"
             className="form-control"
@@ -59,7 +47,7 @@ const BadgeForm = ({
           <label>Job Title</label>
           <input
             required
-            onChange={handleChange}
+            onChange={onChange}
             type="text"
             name="jobTitle"
             className="form-control"
@@ -76,7 +64,7 @@ const BadgeForm = ({
             <input
               className="form-control"
               name="twitter"
-              onChange={handleChange}
+              onChange={onChange}
               required
               type="text"
               value={twitter}
@@ -84,7 +72,7 @@ const BadgeForm = ({
           </div>
         </div>
 
-        <button disabled={isLoading} className="btn btn-primary">
+        <button className="btn btn-primary">
           {edit ? "Actualizar" : "Crear Badge"}
         </button>
       </form>
