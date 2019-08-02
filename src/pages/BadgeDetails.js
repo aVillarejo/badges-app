@@ -5,13 +5,23 @@ import { Link } from "react-router-dom";
 import Badge from "../components/Badge";
 import ErrorBanner from "../components/ErrorBanner";
 import PageLoading from "../components/Loading";
+import DeleteBadgeModal from "../components/DeleteBadgeModal";
 
 //Styles & Assets
 import conflogo from "../images/platziconf-logo.svg";
 import "./styles/BadgeDetails.css";
 
 const BadgeDetails_Layout = props => {
-  const { badge, error, isLoading, handleError } = props;
+  const {
+    badge,
+    error,
+    isLoading,
+    handleError,
+    onCloseModal,
+    onOpenModal,
+    isOpenModal,
+    onDelete
+  } = props;
 
   return (
     <div>
@@ -21,7 +31,6 @@ const BadgeDetails_Layout = props => {
             <div className="col-6">
               <img src={conflogo} alt="conflogo" />
             </div>
-
             <div className="col-6 BadgeDetails__hero-attendant-name">
               <h3>
                 {badge.firstName} {badge.lastName}
@@ -59,12 +68,15 @@ const BadgeDetails_Layout = props => {
                   </Link>
                 </div>
                 <div>
-                  <button
-                    className="btn btn-danger"
-                    onClick={() => console.log("eliminar badge")}
-                  >
+                  <button className="btn btn-danger" onClick={onOpenModal}>
                     Delete
                   </button>
+
+                  <DeleteBadgeModal
+                    onCloseModal={onCloseModal}
+                    isOpenModal={isOpenModal}
+                    onDelete={onDelete}
+                  />
                 </div>
               </div>
             </div>

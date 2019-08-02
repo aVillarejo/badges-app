@@ -12,7 +12,7 @@ import confLogo from "../images/platziconf-logo.svg";
 import "./styles/Badges.css";
 
 const Badges = props => {
-  const { data, isLoading, error } = props;
+  const { data, isLoading, error, query, onSearch } = props;
 
   if (error) {
     return <PageError error={error} />;
@@ -37,6 +37,15 @@ const Badges = props => {
               <Link to="/badges/new" className="btn btn-primary">
                 New Badge
               </Link>
+            </div>
+
+            <div className="form-group">
+              <label>Filter Badges</label>
+              <input
+                className="form-control"
+                value={query}
+                onChange={onSearch}
+              />
             </div>
             <BadgesList error={error} badges={data} />
           </Fragment>
