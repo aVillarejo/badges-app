@@ -62,7 +62,7 @@ const BadgeDetails_Layout = props => {
                 <div>
                   <Link
                     className="btn btn-primary mb-4"
-                    to={`/badges/edit/${badge.id}`}
+                    to={`/badges/edit/${badge._id}`}
                   >
                     Edit
                   </Link>

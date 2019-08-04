@@ -50,13 +50,14 @@ const BadgeDetailsContainer = props => {
       const fetchData = await api.badges.remove(badgeId);
       setBadge(fetchData);
       setisLoading(false);
-      props.history.push("/badges");
       setModal(false);
+      props.history.push("/badges");
     } catch (err) {
       setisLoading(false);
       setError(err);
     }
   };
+  console.log(badge);
   return (
     <BadgeDetails
       badge={badge}

@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
 //Components
-import api from "../api";
-import BadgeEdit from "../pages/BadgeEdit";
+import api from '../api';
+import BadgeEdit from '../pages/BadgeEdit';
 
 const BadgeEdit_Container = props => {
   const { badgeId } = props.match.params;
   const [isLoading, setisLoading] = useState(true);
   const [error, setError] = useState(null);
   const [state, setState] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    jobTitle: "",
-    twitter: ""
+    firstName: '',
+    lastName: '',
+    email: '',
+    jobTitle: '',
+    twitter: ''
   });
 
   useEffect(() => {
@@ -42,9 +42,9 @@ const BadgeEdit_Container = props => {
     setisLoading(true);
     setError(null);
     try {
-      await api.badges.update(state.id, state);
+      await api.badges.update(state._id, state);
       setisLoading(false);
-      props.history.push("/badges");
+      props.history.push('/badges');
     } catch (err) {
       setError(err);
       console.log({ error: error });
@@ -56,7 +56,7 @@ const BadgeEdit_Container = props => {
   };
 
   if (error) {
-    return props.history.push("/badges");
+    return props.history.push('/badges');
   }
 
   return (

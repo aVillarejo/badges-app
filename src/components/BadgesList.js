@@ -36,9 +36,9 @@ const BadgesList = ({ badges }) => {
       <ul className="list-unstyled ">
         {badges.map(badge => {
           return (
-            <li key={badge.id}>
+            <li key={badge._id}>
               <Link
-                to={`/badges/${badge.id}`}
+                to={`/badges/${badge._id}`}
                 className="text-reset text-decoration-none"
               >
                 <BadgeListitem badge={badge} />

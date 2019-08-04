@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
-import api from "../api";
-import Badges from "../pages/Badges";
-import useSearchOnList from "../hooks/useSearchOnList";
+import api from '../api';
+import Badges from '../pages/Badges';
+import useSearchOnList from '../hooks/useSearchOnList';
 
 const Badges_Container = () => {
   const [data, setData] = useState(undefined);
@@ -19,7 +19,7 @@ const Badges_Container = () => {
 
     try {
       const fetchData = await api.badges.list();
-      setData(fetchData);
+      setData(fetchData.data);
       setisLoading(false);
     } catch (err) {
       setisLoading(false);
